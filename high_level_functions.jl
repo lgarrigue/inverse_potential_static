@@ -297,7 +297,9 @@ function inverse_pot(tρ,p;plot_infos=false,init_v=-1,tv=0)
 			general_plot = Plots.plot(title_plot,Eplot_1,Eplot_N,res_plot,Dplot,layout=l,titlefontsize=9,thickness_scaling=ts,size=size)
 		end
 		if j ≤ 2 || mod(j,30)==0
-			Plots.savefig(general_plot,string("intermediate_plots/step",j,".png"))
+			path = "intermediate_plots/"
+			if !isdir(path) mkdir(path) end
+			Plots.savefig(general_plot,string(path,"step",j,".png"))
 		end
 		if true
 			if p.dim == 2 && false
